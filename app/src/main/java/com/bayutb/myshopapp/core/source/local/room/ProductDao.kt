@@ -1,5 +1,6 @@
 package com.bayutb.myshopapp.core.source.local.room
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -7,6 +8,7 @@ import androidx.room.Update
 import com.bayutb.myshopapp.core.source.local.entity.ProductEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface ProductDao {
 
     @Query("SELECT * FROM Products")
