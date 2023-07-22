@@ -16,9 +16,9 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getAllProducts()
-                val data = response.list
+                val data = response.products
                 if (data.isNotEmpty()) {
-                    emit(ApiResponse.Success(response.list))
+                    emit(ApiResponse.Success(response.products))
                 } else {
                     emit(ApiResponse.Empty)
                 }
