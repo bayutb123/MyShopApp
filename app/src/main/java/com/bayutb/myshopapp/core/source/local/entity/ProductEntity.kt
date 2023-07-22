@@ -24,5 +24,5 @@ data class ProductEntity(
     val image: String,
 
     @ColumnInfo(name = "isFavourite")
-    val isFavourite: Boolean = false
+    var isFavourite: Boolean = false
 )
