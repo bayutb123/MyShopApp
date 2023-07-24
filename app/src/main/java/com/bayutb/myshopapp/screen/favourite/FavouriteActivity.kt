@@ -1,13 +1,11 @@
 package com.bayutb.myshopapp.screen.favourite
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bayutb.myshopapp.R
-import com.bayutb.myshopapp.core.data.Resource
 import com.bayutb.myshopapp.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityFavouriteBinding
 import com.bayutb.myshopapp.screen.detail.DetailActivity
@@ -23,6 +21,7 @@ class FavouriteActivity : AppCompatActivity() {
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = "Favourite"
         val productAdapter = initAdapter()
 
         favouriteViewModel.favouriteProduct.observe(this) {data ->
