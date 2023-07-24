@@ -17,4 +17,8 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
+
+    companion object {
+        const val DATA = "data"
+    }
 }

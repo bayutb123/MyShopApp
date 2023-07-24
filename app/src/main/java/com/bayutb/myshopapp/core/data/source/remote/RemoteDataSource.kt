@@ -4,6 +4,8 @@ import android.util.Log
 import com.bayutb.myshopapp.core.data.source.remote.network.ApiResponse
 import com.bayutb.myshopapp.core.data.source.remote.network.ApiService
 import com.bayutb.myshopapp.core.data.source.remote.response.ProductResponse
+import com.bayutb.myshopapp.core.domain.model.Product
+import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,9 +18,9 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getAllProducts()
-                val data = response.products
+                val data = response.response
                 if (data.isNotEmpty()) {
-                    emit(ApiResponse.Success(response.products))
+                    emit(ApiResponse.Success(response.response))
                 } else {
                     emit(ApiResponse.Empty)
                 }
