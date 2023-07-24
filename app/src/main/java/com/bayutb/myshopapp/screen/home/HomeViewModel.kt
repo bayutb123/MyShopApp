@@ -9,5 +9,4 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(productUseCase: ProductUseCase) : ViewModel(){
     val products = productUseCase.getAllProduct().asLiveData()
-    val test = "Test"
 }

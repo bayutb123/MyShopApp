@@ -1,12 +1,12 @@
 package com.bayutb.myshopapp.core.utils
 
 import com.bayutb.myshopapp.core.data.source.local.entity.ProductEntity
-import com.bayutb.myshopapp.core.data.source.remote.response.ProductResponse
+import com.bayutb.myshopapp.core.data.source.remote.response.ProductsResponse
 import com.bayutb.myshopapp.core.domain.model.Product
 
 object ListMapper {
 
-    fun mapResponseToEntity(input: List<ProductResponse>): List<ProductEntity> {
+    fun mapResponseToEntity(input: List<ProductsResponse>): List<ProductEntity> {
         val result = ArrayList<ProductEntity>()
         input.map {
             val data = ProductEntity(
@@ -14,7 +14,7 @@ object ListMapper {
                 title = it.title,
                 description = it.description,
                 price = it.price,
-                image = it.image
+                image = it.thumbnail
             )
             result.add(data)
         }

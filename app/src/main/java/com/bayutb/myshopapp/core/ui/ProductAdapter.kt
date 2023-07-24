@@ -44,6 +44,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.image)
+                    .centerCrop()
                     .into(binding.ivProduct)
                 tvTitle.text = data.title
                 tvPrice.text = convertToCurrency(data.price)

@@ -1,7 +1,6 @@
 package com.bayutb.myshopapp.screen.home
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bayutb.myshopapp.R
 import com.bayutb.myshopapp.core.data.Resource
-import com.bayutb.myshopapp.core.domain.model.Product
 import com.bayutb.myshopapp.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityHomeBinding
 import com.bayutb.myshopapp.screen.detail.DetailActivity
@@ -29,6 +27,8 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val productAdapter = initAdapter()
+
         homeViewModel.products.observe(this) { data ->
             if (data != null) {
                 when (data) {
@@ -39,6 +39,7 @@ class HomeActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         binding.progressCircular.visibility = View.GONE
                         binding.tvErrorMsg.visibility = View.GONE
+                        productAdapter.updateData(data.data)
                     }
                     is Resource.Error -> {
                         binding.progressCircular.visibility = View.GONE
@@ -49,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
             with(binding.rvProduct) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
-                adapter = initAdapter()
+                adapter = productAdapter
             }
         }
     }

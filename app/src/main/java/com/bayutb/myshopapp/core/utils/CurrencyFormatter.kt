@@ -6,6 +6,6 @@ import java.util.Currency
 fun convertToCurrency(input: Int) : String {
     val format = NumberFormat.getCurrencyInstance()
     format.minimumFractionDigits = 0
-    format.currency = Currency.getInstance("ID")
-    return format.format(input.toDouble())
+    format.currency = Currency.getInstance("USD")
+    return format.format(input.toDouble()).replace("$", "$ ")
 }

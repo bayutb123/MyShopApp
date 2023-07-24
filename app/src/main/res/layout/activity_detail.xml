@@ -13,7 +13,7 @@
             tools:context=".screen.detail.DetailActivity">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/iv_product"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 android:contentDescription="Product Image"
@@ -34,7 +34,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
             <TextView
                 android:id="@+id/price"
@@ -56,16 +56,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/price" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_favourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/fav_bg"
                 android:contentDescription="Favourite"
-                android:src="@drawable/baseline_favorite_24"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                android:src="@drawable/fab_selector"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_product"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

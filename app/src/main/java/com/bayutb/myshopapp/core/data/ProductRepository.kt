@@ -3,7 +3,7 @@ package com.bayutb.myshopapp.core.data
 import com.bayutb.myshopapp.core.data.source.local.LocalDataSource
 import com.bayutb.myshopapp.core.data.source.remote.RemoteDataSource
 import com.bayutb.myshopapp.core.data.source.remote.network.ApiResponse
-import com.bayutb.myshopapp.core.data.source.remote.response.ProductResponse
+import com.bayutb.myshopapp.core.data.source.remote.response.ProductsResponse
 import com.bayutb.myshopapp.core.utils.ListMapper
 import com.bayutb.myshopapp.core.utils.MyExecutors
 import com.bayutb.myshopapp.core.domain.model.Product
@@ -18,18 +18,18 @@ class ProductRepository @Inject constructor(
     private val myExecutors: MyExecutors
 ): IProductRepository {
     override fun getAllProduct(): Flow<Resource<List<Product>>> {
-        return object : NetworkBoundResource<List<Product>, List<ProductResponse>>() {
+        return object : NetworkBoundResource<List<Product>, List<ProductsResponse>>() {
             override fun loadFromDB(): Flow<List<Product>> {
                 return localDataSource.getAllProduct().map {
                     ListMapper.mapEntityToDomain(it)
                 }
             }
 
-            override suspend fun createCall(): Flow<ApiResponse<List<ProductResponse>>> {
+            override suspend fun createCall(): Flow<ApiResponse<List<ProductsResponse>>> {
                 return remoteDataSource.getProducts()
             }
 
-            override suspend fun saveCall(data: List<ProductResponse>) {
+            override suspend fun saveCall(data: List<ProductsResponse>) {
                 val entity = ListMapper.mapResponseToEntity(data)
                 localDataSource.insertProduct(entity)
             }
@@ -50,7 +50,7 @@ class ProductRepository @Inject constructor(
     override fun setFavourite(product: Product, state: Boolean) {
         val entity = ListMapper.mapDomainToEntity(product)
         myExecutors.diskIO().execute {
-            localDataSource.setFavourite(productEntity = entity, newState = entity.isFavourite)
+            localDataSource.setFavourite(entity, state)
         }
     }
 

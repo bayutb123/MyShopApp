@@ -28,7 +28,7 @@ class NetworkModule {
     fun provideApiService(okHttpClient: OkHttpClient) : ApiService {
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://fakestoreapi.com/")
+            .baseUrl("https://dummyjson.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

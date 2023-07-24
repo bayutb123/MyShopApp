@@ -17,7 +17,7 @@ interface ProductDao {
     @Query("SELECT * FROM Products WHERE isFavourite=1")
     fun getFavourite(): Flow<List<ProductEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProduct(product: List<ProductEntity>)
 
     @Update
