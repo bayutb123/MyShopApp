@@ -2,8 +2,8 @@ package com.bayutb.myshopapp.core.di
 
 import android.content.Context
 import androidx.room.Room
-import com.bayutb.myshopapp.core.source.local.entity.ProductDatabase
-import com.bayutb.myshopapp.core.source.local.room.ProductDao
+import com.bayutb.myshopapp.core.data.source.local.entity.ProductDatabase
+import com.bayutb.myshopapp.core.data.source.local.room.ProductDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

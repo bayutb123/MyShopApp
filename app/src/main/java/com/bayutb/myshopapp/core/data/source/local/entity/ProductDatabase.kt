@@ -1,8 +1,8 @@
-package com.bayutb.myshopapp.core.source.local.entity
+package com.bayutb.myshopapp.core.data.source.local.entity
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.bayutb.myshopapp.core.source.local.room.ProductDao
+import com.bayutb.myshopapp.core.data.source.local.room.ProductDao
 
 @Database(entities = [ProductEntity::class], version = 1, exportSchema = false)
 abstract class ProductDatabase: RoomDatabase() {

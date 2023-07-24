@@ -1,9 +1,9 @@
-package com.bayutb.myshopapp.core.source.remote
+package com.bayutb.myshopapp.core.data.source.remote
 
 import android.util.Log
-import com.bayutb.myshopapp.core.source.remote.network.ApiResponse
-import com.bayutb.myshopapp.core.source.remote.network.ApiService
-import com.bayutb.myshopapp.core.source.remote.response.ProductResponse
+import com.bayutb.myshopapp.core.data.source.remote.network.ApiResponse
+import com.bayutb.myshopapp.core.data.source.remote.network.ApiService
+import com.bayutb.myshopapp.core.data.source.remote.response.ProductResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

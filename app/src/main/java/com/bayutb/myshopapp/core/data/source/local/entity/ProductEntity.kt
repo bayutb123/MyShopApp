@@ -1,4 +1,4 @@
-package com.bayutb.myshopapp.core.source.local.entity
+package com.bayutb.myshopapp.core.data.source.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

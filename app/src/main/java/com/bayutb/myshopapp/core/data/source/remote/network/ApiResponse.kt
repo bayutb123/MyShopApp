@@ -1,4 +1,4 @@
-package com.bayutb.myshopapp.core.source.remote.network
+package com.bayutb.myshopapp.core.data.source.remote.network
 
 sealed class ApiResponse<out R> {
 
