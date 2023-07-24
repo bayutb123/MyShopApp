@@ -1,6 +1,6 @@
 package com.bayutb.myshopapp.core.di
 
-import com.bayutb.myshopapp.core.source.remote.network.ApiService
+import com.bayutb.myshopapp.core.data.source.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

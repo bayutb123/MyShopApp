@@ -1,4 +1,4 @@
-package com.bayutb.myshopapp.core.source.remote.response
+package com.bayutb.myshopapp.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -14,7 +14,7 @@ data class ProductResponse(
     val image: String,
 
     @field:SerializedName("price")
-    val price: Double,
+    val price: Int,
 
     @field:SerializedName("description")
     val description: String,
