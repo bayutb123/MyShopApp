@@ -28,6 +28,8 @@ class FavouriteActivity : AppCompatActivity() {
             productAdapter.updateData(data)
             binding.progressCircular.visibility = View.GONE
             if (data.isNullOrEmpty()) {
+                binding.tvErrorMsg.visibility = View.VISIBLE
+            } else {
                 binding.tvErrorMsg.visibility = View.GONE
             }
             with(binding.rvProduct) {

@@ -1,10 +1,8 @@
 package com.bayutb.myshopapp.screen.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bayutb.myshopapp.R
 import com.bayutb.myshopapp.core.domain.model.Product
@@ -13,6 +11,7 @@ import com.bayutb.myshopapp.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
