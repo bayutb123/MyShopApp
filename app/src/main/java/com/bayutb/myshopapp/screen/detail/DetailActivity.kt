@@ -4,19 +4,18 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bayutb.core.domain.model.Product
+import com.bayutb.core.utils.convertToCurrency
 import com.bayutb.myshopapp.R
-import com.bayutb.myshopapp.core.domain.model.Product
-import com.bayutb.myshopapp.core.utils.convertToCurrency
 import com.bayutb.myshopapp.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATION")
-@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    private val detailViewModel by viewModels<DetailViewModel>()
+    private val detailViewModel by viewModel<DetailViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)

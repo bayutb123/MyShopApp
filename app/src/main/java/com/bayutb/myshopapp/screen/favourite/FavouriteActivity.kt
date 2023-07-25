@@ -3,19 +3,17 @@ package com.bayutb.myshopapp.screen.favourite
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bayutb.myshopapp.core.ui.ProductAdapter
+import com.bayutb.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityFavouriteBinding
 import com.bayutb.myshopapp.screen.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FavouriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavouriteBinding
-    private val favouriteViewModel: FavouriteViewModel by viewModels()
+    private val favouriteViewModel: FavouriteViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
