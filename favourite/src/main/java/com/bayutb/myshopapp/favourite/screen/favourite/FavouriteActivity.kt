@@ -1,4 +1,4 @@
-package com.bayutb.myshopapp.screen.favourite
+package com.bayutb.myshopapp.favourite.screen.favourite
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bayutb.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityFavouriteBinding
+import com.bayutb.myshopapp.di.viewModelModule
 import com.bayutb.myshopapp.screen.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavouriteActivity : AppCompatActivity() {
 
@@ -16,13 +18,14 @@ class FavouriteActivity : AppCompatActivity() {
     private val favouriteViewModel: FavouriteViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadKoinModules(listOf(favouriteModule, useCaseModuleForFavouriteViewModel))
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Favourite"
         val productAdapter = initAdapter()
 
-        favouriteViewModel.favouriteProduct.observe(this) {data ->
+        favouriteViewModel.favouriteProduct.observe(this) { data ->
             productAdapter.updateData(data)
             binding.progressCircular.visibility = View.GONE
             if (data.isNullOrEmpty()) {

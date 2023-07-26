@@ -1,4 +1,4 @@
-package com.bayutb.myshopapp.screen.favourite
+package com.bayutb.myshopapp.favourite.screen.favourite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

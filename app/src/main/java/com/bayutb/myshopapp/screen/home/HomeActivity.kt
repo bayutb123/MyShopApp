@@ -1,10 +1,12 @@
 package com.bayutb.myshopapp.screen.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bayutb.core.data.Resource
@@ -12,7 +14,6 @@ import com.bayutb.core.ui.ProductAdapter
 import com.bayutb.myshopapp.R
 import com.bayutb.myshopapp.databinding.ActivityHomeBinding
 import com.bayutb.myshopapp.screen.detail.DetailActivity
-import com.bayutb.myshopapp.screen.favourite.FavouriteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -72,8 +73,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_favourite -> {
-                Intent(this, FavouriteActivity::class.java).also {
-                    startActivity(it)
+                try {
+                    val uri = Uri.parse("myshopapp://favourite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Module not installed", Toast.LENGTH_SHORT).show()
                 }
                 true
             }
