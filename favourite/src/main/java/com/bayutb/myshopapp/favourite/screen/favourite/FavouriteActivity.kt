@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bayutb.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityFavouriteBinding
-import com.bayutb.myshopapp.di.viewModelModule
+import com.bayutb.myshopapp.favourite.di.favouriteModule
 import com.bayutb.myshopapp.screen.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -18,7 +18,7 @@ class FavouriteActivity : AppCompatActivity() {
     private val favouriteViewModel: FavouriteViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(listOf(favouriteModule, useCaseModuleForFavouriteViewModel))
+        loadKoinModules(favouriteModule)
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayShowHomeEnabled(true)
