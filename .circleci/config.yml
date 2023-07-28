@@ -39,9 +39,3 @@ jobs:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
 
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
