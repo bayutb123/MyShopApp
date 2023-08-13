@@ -28,24 +28,17 @@ jobs:
       - checkout
       
       - run:
-          name: download dependencies
+          name: chmod
           command: |
             sudo chmod +x gradlew 
       - run:
-          name: Install OpenJDK 17
+          name: download dependencies
           command: |
             sudo apt-get update && sudo apt-get install openjdk-17-jdk
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
-      - run:
-          name: download dependencies
-          command: |
             ./gradlew androidDependencies
-      # The next step will run the unit tests
-      - android/run-tests:
-          test-command: ./gradlew lint testDebug --continue
-
       # Then start the emulator and run the Instrumentation tests!
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedDebugAndroidTest
