@@ -36,6 +36,7 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install openjdk-17-jdk
             sudo update-alternatives --config javac
+            0
             java -version
       - run:
           name: download dependencies
