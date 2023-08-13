@@ -35,7 +35,6 @@ jobs:
           name: Install OpenJDK 17
           command: |
             sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            sudo update-java-alternatives -s java-17-openjdk-amd64
             java -version
       - run:
           name: download dependencies
