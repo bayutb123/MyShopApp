@@ -35,7 +35,7 @@ jobs:
           name: download dependencies
           command: |
             sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            sudo update-java-alternatives --list
+            sudo update-java-alternatives --set /usr/lib/jvm/java-1.17.0-openjdk-amd64
             java -version
             ./gradlew androidDependencies
       # Then start the emulator and run the Instrumentation tests!
