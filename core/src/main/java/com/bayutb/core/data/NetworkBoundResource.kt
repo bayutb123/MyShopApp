@@ -25,7 +25,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
                 is ApiResponse.Error -> {
                     onFetchFailed()
-                    emit(com.bayutb.core.data.Resource.Error(apiResponse.message))
+                    emit(Resource.Error(apiResponse.message))
                 }
             }
         }
