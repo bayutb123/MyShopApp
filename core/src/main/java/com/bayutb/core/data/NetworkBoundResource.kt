@@ -8,19 +8,19 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 abstract class NetworkBoundResource<ResultType, RequestType> {
-    private var result: Flow<com.bayutb.core.data.Resource<ResultType>> = flow {
-        emit(com.bayutb.core.data.Resource.Loading())
+    private var result: Flow<Resource<ResultType>> = flow {
+        emit(Resource.Loading())
         val db = loadFromDB().first()
         if (shouldFetch(db)) {
-            emit(com.bayutb.core.data.Resource.Loading())
+            emit(Resource.Loading())
             when (val apiResponse = createCall().first()) {
                 is ApiResponse.Success -> {
                     saveCall(apiResponse.data)
-                    emitAll(loadFromDB().map { com.bayutb.core.data.Resource.Success(it) })
+                    emitAll(loadFromDB().map { Resource.Success(it) })
                 }
 
                 is ApiResponse.Empty -> {
-                    emitAll(loadFromDB().map { com.bayutb.core.data.Resource.Success(it) })
+                    emitAll(loadFromDB().map { Resource.Success(it) })
                 }
 
                 is ApiResponse.Error -> {
@@ -41,6 +41,6 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     protected open fun onFetchFailed() {}
 
-    fun asFlow() : Flow<com.bayutb.core.data.Resource<ResultType>> = result
+    fun asFlow() : Flow<Resource<ResultType>> = result
 
 }

@@ -58,3 +58,30 @@
 -dontwarn org.conscrypt.**
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
+
+-keep class kotlinx.coroutines.**
+
+-keepnames class android.arch.lifecycle.ViewModel
+-keepclassmembers public class * extends android.arch.lifecycle.ViewModel { public <init>(...); }
+-keepclassmembers class com.lebao.app.domain.** { public <init>(...); }
+-keepclassmembers class * { public <init>(...); }
+
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+ <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
+
+# Gson specific classes
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.bayutb.core.data.source.remote.response.** { *; }
