@@ -70,13 +70,6 @@
 -keep class * extends com.bumptech.glide.module.AppGlideModule {
  <init>(...);
 }
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
--keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
-  *** rewind();
-}
 
 
 # Gson specific classes
@@ -86,3 +79,6 @@
 # Application classes that will be serialized/deserialized over Gson
 -keep class com.bayutb.core.data.source.remote.response.** { *; }
 
+
+-keep,includedescriptorclasses class net.sqlcipher.** { *; }
+-keep,includedescriptorclasses interface net.sqlcipher.** { *; }
