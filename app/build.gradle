@@ -2,18 +2,14 @@ plugins {
     // MAIN
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
-    // KAPT AND KSP
     id 'com.google.devtools.ksp'
-    id 'kotlin-kapt'
-    // CORE ONLY
-    id 'kotlin-parcelize'
 }
 
 apply from: '../shared_dependencies.gradle'
 
 android {
     namespace 'com.bayutb.myshopapp'
+    dynamicFeatures = [':favourite']
     compileSdk 33
 
     defaultConfig {
@@ -37,10 +33,6 @@ android {
         enabled = true
     }
 
-    dataBinding {
-        enabled = true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -48,42 +40,18 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    dynamicFeatures = [':favourite']
 }
 
 dependencies {
     implementation project(":core")
 
-    // TO BE SHARED OR APP ONLY
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-android-compiler:2.44"
-
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    // APP ONLY
-    def lifecycle_version = "2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation 'androidx.activity:activity-ktx:1.7.2'
 
-    // CORE ONLY
-    def room_version = "2.5.2"
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
-    implementation 'com.squareup.okhttp3:okhttp'
-    implementation 'com.squareup.okhttp3:logging-interceptor'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-    ksp "androidx.room:room-compiler:$room_version"
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     ksp 'com.github.bumptech.glide:ksp:4.14.2'
+
 }
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cd_product_image">Product Image</string>
+    <string name="dummy_title">Title</string>
+    <string name="dummy_price">Rp. 15.000.000</string>
+</resources>

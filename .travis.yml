@@ -1,0 +1,15 @@
+language: android
+jdk: openjdk17
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-30.0.2
+    - android-30
+
+script:
+  - ./gradlew build
+
+notifications:
+  email: false

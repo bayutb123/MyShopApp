@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.bayutb.myshopapp.favourite">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_favourite">
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application android:icon="@mipmap/ic_launcher">
+
+        <activity android:name=".screen.favourite.FavouriteActivity"
+            android:exported="true"
+            android:parentActivityName="com.bayutb.myshopapp.screen.home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="myshopapp" android:host="favourite"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

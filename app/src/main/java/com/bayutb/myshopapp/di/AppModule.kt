@@ -1,19 +1,19 @@
 package com.bayutb.myshopapp.di
 
-import com.bayutb.myshopapp.core.domain.usecase.ProductInteractor
-import com.bayutb.myshopapp.core.domain.usecase.ProductUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
+import com.bayutb.core.domain.usecase.ProductInteractor
+import com.bayutb.core.domain.usecase.ProductUseCase
+import com.bayutb.myshopapp.screen.detail.DetailViewModel
+import com.bayutb.myshopapp.screen.home.HomeViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(ViewModelComponent::class)
-abstract class AppModule {
+val useCaseModule = module {
+    factory<ProductUseCase> {
+        ProductInteractor(get())
+    }
+}
 
-    @Binds
-    @ViewModelScoped
-    abstract fun provideProductUseCase(productInteractor: ProductInteractor): ProductUseCase
-
+val viewModelModule = module {
+    viewModel { HomeViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

@@ -1,26 +1,25 @@
 package com.bayutb.myshopapp.screen.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.viewModels
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bayutb.core.data.Resource
+import com.bayutb.core.ui.ProductAdapter
 import com.bayutb.myshopapp.R
-import com.bayutb.myshopapp.core.data.Resource
-import com.bayutb.myshopapp.core.ui.ProductAdapter
 import com.bayutb.myshopapp.databinding.ActivityHomeBinding
 import com.bayutb.myshopapp.screen.detail.DetailActivity
-import com.bayutb.myshopapp.screen.favourite.FavouriteActivity
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +73,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_favourite -> {
-                Intent(this, FavouriteActivity::class.java).also {
-                    startActivity(it)
+                try {
+                    val uri = Uri.parse("myshopapp://favourite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Module not installed", Toast.LENGTH_SHORT).show()
                 }
                 true
             }
