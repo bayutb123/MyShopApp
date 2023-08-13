@@ -26,6 +26,12 @@ jobs:
 
       # Checkout the code as the first step.
       - checkout
+      
+      - run:
+          name: download dependencies
+          command: |
+            sudo chmod +x gradlew 
+            ./gradlew androidDependencies
       - run:
           name: Install OpenJDK 17
           command: |
@@ -33,11 +39,6 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
-      - run:
-          name: download dependencies
-          command: |
-            sudo chmod +x gradlew 
-            ./gradlew androidDependencies
       # The next step will run the unit tests
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
