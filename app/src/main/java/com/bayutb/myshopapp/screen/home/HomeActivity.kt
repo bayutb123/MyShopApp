@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
         val productAdapter = initAdapter()
 
         homeViewModel.products.observe(this) { data ->
+
             if (data != null) {
                 when (data) {
                     is Resource.Loading -> {
@@ -51,6 +52,7 @@ class HomeActivity : AppCompatActivity() {
                 setHasFixedSize(true)
                 adapter = productAdapter
             }
+
         }
     }
 
@@ -85,6 +87,11 @@ class HomeActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        homeViewModel.products.removeObservers(this)
     }
 
 }

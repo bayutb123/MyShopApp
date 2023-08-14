@@ -51,4 +51,9 @@ class FavouriteActivity : AppCompatActivity() {
 
         return adapter
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        favouriteViewModel.favouriteProduct.removeObservers(this)
+    }
 }
