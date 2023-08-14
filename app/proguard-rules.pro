@@ -71,6 +71,9 @@
  <init>(...);
 }
 
+-keep class com.squareup.okhttp3.** {
+*;
+}
 
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
